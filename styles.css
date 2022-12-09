@@ -1,0 +1,36 @@
+h1 {
+    color: blueviolet;
+}
+html{
+    color: aqua;
+}
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 10;
+}
+
+
+
+body{
+    background: rgb(27, 27, 27);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.card {
+    background: white;
+    width: 270px;
+    height: 400px;
+    margin: 10px;
+
+}
+
+.card-image{
+    background-color: antiquewhite;
+    height: 150px;
+    margin: 15px;
+}
