@@ -1,0 +1,93 @@
+
+
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: Helvetica, Arial, sans-serif;
+    margin: 48px;
+}
+
+.boxpage{
+    justify-content: left;
+    flex-wrap: wrap;
+    margin: 30px;
+    background: rgb(199, 210, 177);
+    width:fit-content;
+    height: fit-content;
+    margin: 0px;
+    border-radius: 16px;
+    padding: 40px;
+    box-shadow: 4px;
+}
+.container-searchbar {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.card-searchbar {
+    background: white;
+    width:fit-content;
+    height: fit-content;
+    margin: 0px;
+    border-radius: 16px;
+    padding: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px;
+}
+
+.card {
+    background: rgb(170, 225, 238);
+    width: 830px;
+    height: 160px;
+    margin: 0px;
+    border-radius: 16px;
+    padding: 15px;
+}
+
+.card:hover{
+    transform: scale(1.03);
+}
+
+
+.tag{
+    font-family: Helvetica, Arial, sans-serif;
+	background: #e4e4e4;
+	display: inline-block;
+	color: rgb(0, 0, 0);
+	position: relative;
+	padding: 5px;
+    border-radius: 4px;
+	margin: 0 0px 2px 0;
+	text-decoration: none;
+}
+
+.iframe{
+    justify-content: center;
+}
+
+.NP_details {
+    display: flex;
+}
+
+.mountain{
+    display: flex;
+    justify-content: center;
+}
+
+.map{
+    display: flex;
+    justify-content: center;
+}

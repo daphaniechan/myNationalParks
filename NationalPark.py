@@ -1,18 +1,12 @@
 import urllib.parse, urllib.request, urllib.error, json
 from flask import Flask, render_template, request
-import logging
 
 app = Flask(__name__)
 
-
-# print(type(req))
 import key as key
 my_key = key.key
 endpoint = "https://developer.nps.gov/api/v1/parks?api_key=" + my_key
-# HEADERS = {"Authorization":"mse4vGTif7zJqKLNMobA04oeixJzk1Lly949UA8V"}
-# req = urllib.request.Request(endpoint,headers=HEADERS)
 
-# Execute request and parse response
 response = urllib.request.urlopen(endpoint).read()
 data = json.loads(response.decode('utf-8'))
 
@@ -23,7 +17,7 @@ def pretty(obj):
 @app.route("/")
 def main_handler():
     app.logger.info("In MainHandler")
-    return render_template('askNationalPark_1.html',page_title="National Park question form")
+    return render_template('home-page.html',page_title="National Park question form")
 
 
 @app.route("/gresponse")
@@ -44,14 +38,14 @@ def response_handler():
                 return render_template('response.html',page_title="page 2", 
                 user_NP = user_NP, 
                 item = item, 
-                progress = progress
+                progress = ''
                 )
             else:
                 progress += '4ab '
                 return render_template('askNationalPark_1.html',
                 page_title="Greeting Form - Error",
                 prompt="Park not found, Please try again!", 
-                progress = progress)
+                progress = '')
 
 
     #search for national park
@@ -71,26 +65,37 @@ def response_handler():
                 if ele in punc:
                     read_item = read_item.replace(ele, "")
             #searches if search is there
-            if user_broadSearch in read_item:
+            if user_broadSearch.lower() in read_item.lower():
                 progress += '4b '
-                searchResults.append(item['fullName'])
+                searchResults.append(item)
         if searchResults == []:
             searchResults = ['no results found, aw']
 
         return render_template('askNationalPark_1.html',
                     page_title="user input results",
                     searchResults=searchResults, 
-                    progress = progress)
-
-
-
-
+                    progress = '')
+    
+                     
+@app.route("/redirect_button")
+def getNP():
+    select_NP = request.args.get('select_NP')
+    National_park_selected = {}
+    x = 0
+    for item in data['data']:
+        if select_NP == data['data'][x]['parkCode']:
+            National_park_selected = item
+        x+= 1
+    
+    
+    return render_template('response.html',
+                page_title="Selected National Park", 
+                select_NP = National_park_selected, 
+                KEY = key.mapKEY
+    )
 
 if __name__ == "__main__":
 # Used when running locally only. 
 # When deploying to Google AppEngine, a webserver process will
 # serve your app. 
     app.run(host="localhost", port=8080, debug=True)
-
-# for item in data['data']:
-#         print(item['fullName'])

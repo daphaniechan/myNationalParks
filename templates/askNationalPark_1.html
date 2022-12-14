@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Form</title>
+    <link rel="stylesheet" href="static/styles-results.css">
+</head>
+<body>
+    <section class="container-searchbar">
+        <div class="card-searchbar">
+            <div class="card-image"></div>
+            <form action="gresponse" method="get">
+                <label for="username">Find another national park </label>
+                <input type="text" id="user_lat" name="user_broadSearch" />
+                <input type="submit" value="Go" name="gobtn"/> <br/>
+                <br/>
+            </form>
+        </div>
+    </section>
+
+
+    <section class="results">
+        {% if searchResults %}
+            {% for item in searchResults %}
+                <div class="card">
+                    <form action="redirect_button" method="get">
+                    <input type="hidden" name="select_NP" value="{{item['parkCode']}}"/>
+                    <h4>{{item['fullName']}}</h4><br/>
+                    {{item['description']}}<br/>
+                    <button class="button">
+                        see more
+                    </button>
+
+                    </form>
+                    <br/> 
+                </div>
+            {% endfor %}
+        {% endif %}
+    </section>
+
+<div class="picture">
+    `<svg width="1113" height="195" viewBox="0 0 1113 195" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M388.652 14.8917L389.18 15.7865M389.18 15.7865L434.311 92.2428L441.215 151.761M389.18 
+        15.7865L386.87 14L351.011 57.0224L312.48 89.5679L272.055 156.219M389.18 15.7865L435.87 51.8954L450.792 
+        75.5243L497.342 118.547M568.391 54.3474L556.142 111.413L563.937 165.804M129.176 137.717V165.804L153.676 
+        180.74M241.43 125.457L226.507 151.761M2 193L56.3451 135.042L84.4085 123.674L125.613 84.2179L150.335 
+        113.197L162.585 144.851L182.631 163.213M182.631 163.213L215.148 193M182.631 163.213L240.539 123.674L266.821 
+        144.851L272.055 156.219M312.48 193L277.289 167.588L272.055 156.219M462.374 193L503.578 113.197L567.501 
+        51.8954L657.5 111.413M976.645 3.94645L977.205 4.89631M977.205 4.89631L1025.02 86.0511L1032.33 149.227M977.205 
+        4.89631L974.757 3L936.766 48.6663L895.943 83.2117L853.115 153.959M977.205 4.89631L1026.67 43.2242L1042.48 
+        68.3051L1111.5 180.74M701.739 134.32V164.133L727.696 179.986M820.669 121.306L804.859 149.227M567 193L624.577 
+        131.481L654.309 119.413L697.964 77.533L724.156 108.293L737.135 141.892L758.372 161.382M758.372 161.382L792.824 
+        193M758.372 161.382L819.725 119.413L847.569 141.892L853.115 153.959M895.943 193L858.66 166.026L853.115 
+        153.959" stroke="black" stroke-width="3"/>
+    </svg>
+</div>
+
+</body>
+</html>
