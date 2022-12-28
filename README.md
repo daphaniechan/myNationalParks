@@ -1,2 +1,2 @@
 # myNationalParks
-Users can keep a diary on the national parks they have been to
+Users can search for national parks and get basic information including activities and maps of where the activities are
